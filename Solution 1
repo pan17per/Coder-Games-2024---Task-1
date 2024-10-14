@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+#define MAX_LIMIT 100000000
+
+unsigned long long sum_of_divisors(int n) {
+    unsigned long long sum = 0;
+    for (int i = 1; i <= n / 2; i++) {
+        if (n % i == 0) {
+            sum = sum + i; 
+        }
+    }
+    return sum;
+}
+
+void find_perfect_numbers() {
+    int count = 0;
+    for (int i = 2; i <= MAX_LIMIT; i++) {
+        unsigned long long sum = sum_of_divisors(i);
+        if (sum == i) {
+            printf("Perfect number found: %d\n", i);
+            count++;
+        }
+        if (count == 5) break; 
+        }
+}
+
+int main() {
+    printf("Finding the first 5 perfect numbers from 2 to %d:\n", MAX_LIMIT);
+    find_perfect_numbers();
+    return 0;
+}
